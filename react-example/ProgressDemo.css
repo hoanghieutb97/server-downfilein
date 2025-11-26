@@ -1,0 +1,271 @@
+.progress-demo {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.progress-demo h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Progress Container */
+.progress-container {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.status {
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.status.start { color: #2196F3; }
+.status.compress { color: #FF9800; }
+.status.upload { color: #9C27B0; }
+.status.completed { color: #4CAF50; }
+.status.error { color: #f44336; }
+.status.idle { color: #6c757d; }
+
+.message {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Test Section */
+.test-section {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.test-section h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.input-group textarea {
+    height: 100px;
+    resize: vertical;
+    font-family: monospace;
+}
+
+.input-group input:disabled,
+.input-group textarea:disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.start-btn, .clear-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.start-btn {
+    background: #007bff;
+    color: white;
+    flex: 1;
+}
+
+.start-btn:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.start-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.clear-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.clear-btn:hover {
+    background: #5a6268;
+}
+
+/* Log */
+.log {
+    background: #000;
+    color: #0f0;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 20px 0;
+    border: 1px solid #333;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.log-entry:last-child {
+    margin-bottom: 0;
+}
+
+/* Result */
+.result {
+    background: #e8f5e8;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0;
+    border-left: 4px solid #4CAF50;
+}
+
+.result h4 {
+    margin-top: 0;
+    color: #2e7d32;
+}
+
+.result p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.result a {
+    color: #007bff;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.result a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .progress-demo {
+        padding: 10px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .start-btn, .clear-btn {
+        width: 100%;
+    }
+    
+    .log {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+/* Scrollbar styling for log */
+.log::-webkit-scrollbar {
+    width: 8px;
+}
+
+.log::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.log::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+}
+
+.log::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+
+/* Animation for progress bar */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.progress-fill {
+    animation: pulse 2s infinite;
+}
+
+/* Status animations */
+.status.completed {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading state */
+.start-btn:disabled {
+    position: relative;
+}
+
+.start-btn:disabled::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid transparent;
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
