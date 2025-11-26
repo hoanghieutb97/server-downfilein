@@ -299,8 +299,8 @@ setInterval(() => {
 
 }, 2 * 60 * 1000);
 
-app.listen(4001, () => {
-    console.log('🚀 Server chạy port 4001');
+app.listen(7001, () => {
+    console.log('🚀 Server chạy port 7001');
     console.log('📁 Upload mode: rclone copy/copyto (giữ nguyên cấu trúc thư mục)');
     console.log(`   - Remote base: ${RCLONE_REMOTE_BASE}`);
     console.log('   - File cache: 30s TTL');
