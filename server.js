@@ -159,10 +159,18 @@ function processSendQueue() {
     console.log('Đang chạy script sendlark.py');
     console.log('zipPath:', zipPath);
 
-    const proc = spawn('python', ['sendlark.py', zipPath], {
-        cwd: __dirname,
-        stdio: 'inherit'
-    });
+    // const proc = spawn('python', ['sendlark.py', zipPath], {
+    //     cwd: __dirname,
+    //     stdio: 'inherit'
+    // });
+
+    const pythonPath = "C:/Users/Administrator/AppData/Local/Programs/Python/Python314/python.exe";
+
+const proc=  spawn(pythonPath, [
+  "sendlark.py",
+  zipPath
+]);
+
 
     const finish = (err) => {
         isSending = false;
