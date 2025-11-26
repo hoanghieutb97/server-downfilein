@@ -14,37 +14,50 @@ if not os.path.exists(linkFile):
     raise SystemExit(f"Không tìm thấy file: {linkFile}")
 
 subprocess.Popen(r"C:\Users\Administrator\AppData\Local\Lark\Lark.exe")
+
+
+time.sleep(2)  # cho Lark load đầy đủ
+
+x, y = 150, 600  # vị trí bên trong Lark
+lark_pos = pyautogui.getWindowsWithTitle("Lark")[0]
+
+click_x = lark_pos.left + x
+click_y = lark_pos.top + y
+
+pyautogui.click(click_x, click_y)
+
+
+# Lấy cửa sổ Lark
+win = pyautogui.getWindowsWithTitle("Lark")[0]
+
+win.restore()
+win.activate()
 time.sleep(1)
 
-screen_w, screen_h = pyautogui.size()
-region = (0, 400, screen_w, screen_h - 400)
+# Tọa độ: cách phải 100px, cách dưới 100px
+x = win.left + win.width - 148
+y = win.top + win.height - 60
 
-def find_and_click(image, region=None, confidence=0.9):
-    while True:
-        try:
-            pos = pyautogui.locateCenterOnScreen(
-                image,
-                region=region,
-                confidence=confidence,
-                grayscale=True
-            )
-            if pos:
-                pyautogui.click(pos)
-            
-                break
-            else:
-                print(f"🔍 Đang tìm {image}...")
-        except Exception:
-            pass
-        time.sleep(1)
+pyautogui.click(x, y)
 
-find_and_click("ten.png")
-find_and_click("them.png", region, 0.9)
-find_and_click("taptin.png")
+
+
+# Lấy cửa sổ Lark
+win = pyautogui.getWindowsWithTitle("Lark")[0]
+
+win.restore()
+win.activate()
+time.sleep(1)
+
+# Tọa độ: cách phải 100px, cách dưới 100px
+x = win.left + win.width - 148
+y = win.top + win.height - 450
+
+pyautogui.click(x, y)
 
 time.sleep(1)
 
 pyautogui.write(linkFile, interval=0.02)
 pyautogui.press("enter")
-time.sleep(2)
+time.sleep(1)
 pyautogui.press("enter")
